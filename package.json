@@ -1,0 +1,26 @@
+{
+  "name": "choo-meta",
+  "version": "0.1.0",
+  "description": "Update document meta tags on event",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jallajs/choo-meta.git"
+  },
+  "keywords": [
+    "choo",
+    "meta"
+  ],
+  "author": "Carl Törnqvist <carl@tornqv.ist>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jallajs/choo-meta/issues"
+  },
+  "homepage": "https://github.com/jallajs/choo-meta#readme",
+  "devDependencies": {
+    "standard": "^12.0.1"
+  }
+}
