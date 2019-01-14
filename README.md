@@ -5,5 +5,5 @@
 [![style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://npmjs.org/package/choo-meta)
 
 ## TODO
-[ ] Readme
-[ ] Tests
+- [ ] Readme
+- [ ] Tests
