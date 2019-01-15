@@ -38,20 +38,20 @@ test('append missing nodes by default', function (t) {
 })
 
 test('prevent appending missing nodes', function (t) {
-  document.head.innerHTML = HEAD_HTML
   t.plan(3)
-  var app = choo()
-  app.use(meta({ append: false }))
-  app.route('/*', main)
-
-  function main (state, emit) {
-    emit('meta', { title: 'foo', description: 'bar' })
-    return html`<body></body>`
-  }
-
-  app.mount('body')
-
   window.requestAnimationFrame(function () {
+    document.head.innerHTML = HEAD_HTML
+    var app = choo()
+    app.use(meta({ append: false }))
+    app.route('/*', main)
+
+    function main (state, emit) {
+      emit('meta', { title: 'foo', description: 'bar' })
+      return html`<body></body>`
+    }
+
+    app.mount('body')
+
     window.requestAnimationFrame(function () {
       var title = document.querySelector('title')
       t.equal(title.innerHTML, 'foo', 'title was updated')
