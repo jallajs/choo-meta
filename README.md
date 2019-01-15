@@ -27,7 +27,7 @@ to preserve choo behaviour.
 ```
 
 ## API
-### `emit([opts])`
+### `plugin = meta([opts])`
 Create a [choo][choo] store which listens for the `meta` event. Will lookup meta
 tags in document head and update them in place, optionally adding new tags if
 not found.
