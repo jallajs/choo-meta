@@ -6,4 +6,4 @@
 
 ## TODO
 - [ ] Readme
-- [ ] Tests
+- [x] Tests
