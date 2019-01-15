@@ -6,8 +6,8 @@ var meta = require('../')
 var HEAD_HTML = document.head.innerHTML
 
 test('append missing nodes by default', function (t) {
-  document.head.innerHTML = HEAD_HTML
   t.plan(7)
+  document.head.innerHTML = HEAD_HTML
   var app = choo()
   app.use(meta())
   app.route('/*', main)
@@ -39,8 +39,8 @@ test('append missing nodes by default', function (t) {
 
 test('prevent appending missing nodes', function (t) {
   t.plan(3)
+  document.head.innerHTML = HEAD_HTML
   window.requestAnimationFrame(function () {
-    document.head.innerHTML = HEAD_HTML
     var app = choo()
     app.use(meta({ append: false }))
     app.route('/*', main)
