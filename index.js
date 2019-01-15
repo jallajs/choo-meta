@@ -2,6 +2,7 @@ module.exports = meta
 
 function meta (opts) {
   opts = opts || {}
+  var append = typeof opts.append === 'undefined' || opts.append
 
   return function (state, emitter, app) {
     state.meta = state.meta || {}
@@ -36,7 +37,7 @@ function meta (opts) {
         var el = document.head.querySelector(`meta[${attribute}="${key}"]`)
 
         // optionally append new node if missing
-        if (!el && opts.append) {
+        if (!el && append) {
           el = document.createElement('meta')
           el.setAttribute(attribute, key)
           document.head.appendChild(el)

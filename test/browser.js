@@ -3,10 +3,13 @@ var choo = require('choo')
 var html = require('choo/html')
 var meta = require('../')
 
-test('append missing nodes', function (t) {
+var HEAD_HTML = document.head.innerHTML
+
+test('append missing nodes by default', function (t) {
+  document.head.innerHTML = HEAD_HTML
   t.plan(7)
   var app = choo()
-  app.use(meta({ append: true }))
+  app.use(meta())
   app.route('/*', main)
 
   function main (state, emit) {
@@ -31,5 +34,31 @@ test('append missing nodes', function (t) {
     var ogTest = document.querySelector(`meta[property="og:test"]`)
     t.ok(ogTest, 'og:test tag added')
     t.equal(ogTest.getAttribute('content'), 'baz', 'og:test content match')
+  })
+})
+
+test('prevent appending missing nodes', function (t) {
+  document.head.innerHTML = HEAD_HTML
+  t.plan(3)
+  var app = choo()
+  app.use(meta({ append: false }))
+  app.route('/*', main)
+
+  function main (state, emit) {
+    emit('meta', { title: 'foo', description: 'bar' })
+    return html`<body></body>`
+  }
+
+  app.mount('body')
+
+  window.requestAnimationFrame(function () {
+    var title = document.querySelector('title')
+    t.equal(title.innerHTML, 'foo', 'title was updated')
+
+    var ogTitle = document.querySelector(`meta[property="og:title"]`)
+    t.notOk(ogTitle, 'og:title tag was not added')
+
+    var description = document.querySelector(`meta[name="description"]`)
+    t.notOk(description, 'meta description tag was not added')
   })
 })
