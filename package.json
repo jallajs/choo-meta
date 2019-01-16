@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "posttest": "standard",
-    "test": "npm run test:node && npm run test:browser && npm run test:browser-no-append",
+    "test": "npm run test:node && npm run test:browser",
     "test:browser": "browserify test/browser.js | tape-run | tap-format-spec",
-    "test:browser-no-append": "browserify test/browser-no-append.js | tape-run | tap-format-spec",
     "test:node": "node test/node.js | tap-format-spec"
   },
   "repository": {
