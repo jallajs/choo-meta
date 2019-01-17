@@ -1,6 +1,6 @@
 {
   "name": "choo-meta",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Update document meta tags on event",
   "main": "index.js",
   "scripts": {
