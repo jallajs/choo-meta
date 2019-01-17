@@ -20,10 +20,11 @@ function meta (opts) {
       if (next.title && !next['og:title']) tags['og:title'] = next.title
 
       Object.keys(tags).forEach(function (key) {
-        if (!tags[key]) return
+        var value = tags[key]
+        if (value == null) return
 
         // escape quotes
-        var value = tags[key].replace(/"/g, '&quot;')
+        if (typeof value === 'string') value = value.replace(/"/g, '&quot;')
 
         // make urls absolute
         if (opts.origin) value = value.replace(/^\//, opts.origin + '/')

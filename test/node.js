@@ -52,3 +52,17 @@ test('derive open graph tags', function (t) {
     return html`<body></body>`
   }
 })
+
+test('handles any type', function (t) {
+  t.plan(2)
+  var app = choo()
+  app.use(meta())
+  app.route('/', main)
+  t.doesNotThrow(() => app.toString('/'), 'handles numbers just fine')
+  t.equal(app.state.meta.number, 123, 'numbers are unaltered')
+
+  function main (state, emit) {
+    emit('meta', { number: 123 })
+    return html`<body></body>`
+  }
+})
