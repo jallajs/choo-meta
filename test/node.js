@@ -56,7 +56,7 @@ test('derive open graph tags', function (t) {
 test('handles any type', function (t) {
   t.plan(2)
   var app = choo()
-  app.use(meta())
+  app.use(meta({ origin: 'https://foo.bar' }))
   app.route('/', main)
   t.doesNotThrow(() => app.toString('/'), 'handles numbers just fine')
   t.equal(app.state.meta.number, 123, 'numbers are unaltered')

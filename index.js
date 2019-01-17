@@ -23,11 +23,12 @@ function meta (opts) {
         var value = tags[key]
         if (value == null) return
 
-        // escape quotes
-        if (typeof value === 'string') value = value.replace(/"/g, '&quot;')
-
-        // make urls absolute
-        if (opts.origin) value = value.replace(/^\//, opts.origin + '/')
+        if (typeof value === 'string') {
+          // escape quotes
+          value = value.replace(/"/g, '&quot;')
+          // make urls absolute
+          if (opts.origin) value = value.replace(/^\//, opts.origin + '/')
+        }
 
         state.meta[key] = value
 
