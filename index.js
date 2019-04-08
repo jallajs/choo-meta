@@ -36,7 +36,8 @@ function meta (opts) {
 
         // lookup existing DOM node
         var attribute = key.substr(0, 3) === 'og:' ? 'property' : 'name'
-        var el = document.head.querySelector(`meta[${attribute}="${key}"]`)
+        var selector = 'meta[' + attribute + '="' + key + '"]'
+        var el = document.head.querySelector(selector)
 
         // optionally append new node if missing
         if (!el && append) {
