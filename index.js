@@ -17,11 +17,10 @@ function meta (opts) {
 
       // derive open graph meta tags
       if (opts.origin && !next['og:url']) tags['og:url'] = opts.origin + state.href
-      if (next.title && !next['og:title']) tags['og:title'] = next.title
 
       Object.keys(tags).forEach(function (key) {
         var value = tags[key]
-        if (value == null) return
+        if (value == null || key === 'title') return
 
         if (typeof value === 'string') {
           // escape quotes

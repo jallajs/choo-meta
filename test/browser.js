@@ -10,7 +10,7 @@ test('append missing nodes by default', function (t) {
   document.title = TITLE
   document.head.innerHTML = DOCUMENT_HEAD
 
-  t.plan(9)
+  t.plan(7)
   var app = choo()
   app.use(meta({ origin: 'https://foo.bar' }))
   app.route('/*', main)
@@ -24,10 +24,6 @@ test('append missing nodes by default', function (t) {
 
   var title = document.querySelector('title')
   t.equal(title.innerHTML, 'foo', 'title was updated')
-
-  var ogTitle = document.querySelector(`meta[property="og:title"]`)
-  t.ok(ogTitle, 'og:title tag added')
-  t.equal(ogTitle.getAttribute('content'), 'foo', 'og:title match title')
 
   var description = document.querySelector(`meta[name="description"]`)
   t.ok(description, 'meta description tag added')

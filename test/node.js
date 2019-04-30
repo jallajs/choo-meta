@@ -38,13 +38,12 @@ test('meta forwards title', function (t) {
   }
 })
 
-test('derive open graph tags', function (t) {
-  t.plan(2)
+test('derive og:url', function (t) {
+  t.plan(1)
   var app = choo()
   app.use(meta({ origin: 'https://foo.bar' }))
   app.route('/baz', main)
   app.toString('/baz')
-  t.equal(app.state.meta['og:title'], 'baz', 'og:title mirror title')
   t.equal(app.state.meta['og:url'], 'https://foo.bar/baz', 'og:url resolved')
 
   function main (state, emit) {
